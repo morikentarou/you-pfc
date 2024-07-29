@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_29_121118) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_29_123156) do
+  create_table "goals", charset: "utf8", force: :cascade do |t|
+    t.integer "goal_kcal", null: false
+    t.integer "goal_oil", null: false
+    t.integer "goal_sugar", null: false
+    t.integer "goal_protein", null: false
+    t.bigint "user_id", null: false
+    t.integer "pfctype_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
   create_table "pfcs", charset: "utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,4 +42,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_121118) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "goals", "users"
 end
