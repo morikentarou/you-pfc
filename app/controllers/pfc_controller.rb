@@ -1,2 +1,0 @@
-class PfcController < ApplicationController
-end

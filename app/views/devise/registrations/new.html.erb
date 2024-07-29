@@ -1,0 +1,68 @@
+<%= render "shared/second-header"%>
+
+<div class='form-wrap'>
+  <div class='form-wrap-main'>
+    <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+     <%= render 'shared/error_messages', model: f.object %>
+      <div class='form-header'>
+        <div class='form-header-text'>
+              会員情報入力
+        </div>
+        <div class='login-flash-message'>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">ネーム</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :name, class:"input-default", id:"name", placeholder:"例) furima太郎" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">メールアドレス</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">パスワード</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">パスワード(確認)</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">生年月日</label>
+              <span class="indispensable">必須</span>
+          </div>
+          <div class='input-birth-wrap'>
+              <%= raw sprintf(
+                      f.date_select(
+                        :birthday,
+                        class:'select-birth',
+                        id:"birth-date",
+                        use_month_numbers: true,
+                        prompt:'--',
+                        start_year: 1930,
+                        end_year: (Time.now.year - 5),
+                        date_separator: '%s'),
+                      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        </div>
+        <div class='register-btn'>
+          <%= f.submit "会員登録" ,class:"register-red-btn" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
