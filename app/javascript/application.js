@@ -4,3 +4,4 @@ import "controllers"
 import "chart.js";
 import "chartjs-plugin-datalabels";
 import "./new_goal.js"
+import "./index_goal.js"

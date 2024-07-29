@@ -31,7 +31,14 @@
         <div class='goal-item-left'>
           <div class='goal-item-kcal'><%= content_tag :span, goal.goal_kcal, class: 'goal-kcal-value' %> kcal </div>
           <div class='goal-item-graph'>
-            
+            <canvas id="macrosChart-<%= goal.id %>"></canvas>
+            <div id="goal-data-<%= goal.id %>" style="display:none;">
+              {
+                "goal_protein": <%= goal.goal_protein %>,
+                "goal_sugar": <%= goal.goal_sugar %>,
+                "goal_oil": <%= goal.goal_oil %>
+              }
+            </div>
           </div>
         </div>
         <div class='goal-item-right'>
