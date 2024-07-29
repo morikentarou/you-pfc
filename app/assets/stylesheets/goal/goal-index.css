@@ -170,6 +170,7 @@
 .goal-item-right {
   width: 45vw;
   height: 100%;
+  background-color: aqua;
   border: solid black;
   border-radius: 0 10px 10px 0;
   display: flex;
@@ -215,6 +216,7 @@ height: 38vh;
 }
 
 .goal-item-pfc-left {
+  width: 9vh;
   display: flex;
   align-items: center;
 }
@@ -228,23 +230,26 @@ height: 38vh;
 
 .goal-item-pfc-percent {
   font-size: 3vw;
-  margin-left: 10px;
+  margin-right: 5px;
+  text-align: right;
+  width: 3em;
 }
 
 .goal-item-pfc-value {
-  font-size: 5vw;
+  font-size: 4vw;
   margin: 0 5px 5px;
 }
 
 .goal-item-pfc-item {
   font-size: 2vw;
-  margin: 0 5px 0 0 ;
+  margin: 0 10px 0 0 ;
   padding-top: 5px;
 }
 
 .goal-item-pfc-item-value {
-  font-size: 3vw;
+  font-size: 2vw;
   margin-top: 2px;
   white-space: nowrap;
+  min-width: 2vw;
 }
 
