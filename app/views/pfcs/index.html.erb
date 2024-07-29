@@ -1,1 +1,14 @@
 <%= render "shared/header" %>
+
+<h2>Selected Goal</h2>
+<% if @goal %>
+  <div>
+    <p><strong>Kcal:</strong> <%= @goal.goal_kcal %> kcal</p>
+    <p><strong>Sugar:</strong> <%= @goal.goal_sugar %> g</p>
+    <p><strong>Oil:</strong> <%= @goal.goal_oil %> g</p>
+    <p><strong>Protein:</strong> <%= @goal.goal_protein %> g</p>
+    <p><strong>Category:</strong> <%= @goal.pfctype.name %></p>
+  </div>
+<% else %>
+  <p>No goal found.</p>
+<% end %>

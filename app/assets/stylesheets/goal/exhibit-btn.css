@@ -1,0 +1,24 @@
+.record-btn {
+  text-decoration: none;
+  width: 170px;
+  height: 100px;
+  background: #3ccace;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 50px;
+  right: 50px;
+  position: fixed;
+  padding: 15px;
+  
+}
+
+.record-btn-text {
+  color: #fff;
+  -webkit-text-stroke: 1px black;
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  line-height: 75px;
+}

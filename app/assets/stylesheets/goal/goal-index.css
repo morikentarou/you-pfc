@@ -1,0 +1,250 @@
+.goal-top-record {
+  width: 100vw;
+  height: 15vh;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-btn {
+  width: 150px;
+  height: 50px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  
+}
+
+.custom-btn-text {
+  color: #f5f5f5;
+  -webkit-text-stroke: 1px black;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: normal; 
+}
+
+/* 検索機能 */
+
+.goal-search{
+ width: 100vw;
+ height: 10vh;
+ background-color: aqua;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.goal-search-form {
+ background-color: #f5f5f5;
+ height: 40px;
+ width: 400px;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ border-radius: 5px;
+}
+
+.goal-search-input {
+  width: 300px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 5px;
+}
+
+.goal-search-btn {
+  width: 80px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  background-color: aqua;
+  color: black;
+  -webkit-text-stroke: 1px black;
+}
+
+/* 目標項目 */
+.goal-mein {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goal-item {
+  background-color: aqua;
+  width: 95vw;
+  max-width: 900px;
+  height: 50vh;
+  margin: 40px auto 0;
+  border-radius: 10px;
+  display: flex;
+}
+
+.goal-item-select {
+  width: 10vw;
+  height: 100%;
+  border: solid black;
+  border-radius: 10px 0 0 10px;
+}
+
+.goal-item-select-favorite {
+  height: 40%;
+  width: 100%;
+  border: solid black;
+  border-top: none;
+  border-left: none;
+  border-right:none ;
+  border-radius: 0 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.goal-item-select-font {
+  font-size: 6vw;
+  color: yellow;
+  -webkit-text-stroke: 1px black;
+  text-decoration: none;
+}
+
+.goal-item-select-font:hover {
+  color: red;
+}
+
+.goal-item-select-edit{
+  height: 30%;
+  width: 100%;
+  border: solid black;
+  border-top: none;
+  border-left: none;
+  border-right:none ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 0 10px;
+  background-color: aquamarine;
+}
+
+.goal-item-select-delete {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+  border-radius: 0 0 0 5px;
+}
+
+.goal-item-select-delete-btn {
+  color: black;
+  text-decoration: none;
+}
+
+.goal-item-select-delete-btn:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.goal-item-select-edit-btn {
+  color: black;
+  text-decoration: none;
+}
+
+.goal-item-select-edit-btn:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.goal-item-left {
+  width: 45vw;
+  height: 100%;
+  border: solid black;
+  border-left: none;
+  border-right: none;
+}
+
+.goal-item-right {
+  width: 45vw;
+  height: 100%;
+  border: solid black;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.goal-item-kcal, .goal-item-categories {
+  width: 100%;
+  height: 7vh;
+  border: solid black;
+  border-top:none;
+  border-right: none;
+  border-left: none;
+  font-size: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: bold;
+}
+
+.goal-kcal-value {
+  font-size: 6vh;
+  margin-right: 5px;
+}
+
+.goal-item-graph {
+width: 100%;
+height: 38vh;
+}
+
+.goal-item-pfcs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.goal-item-pfc {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.goal-item-pfc-left {
+  display: flex;
+  align-items: center;
+}
+
+.goal-item-pfc-right {
+  display: flex;
+  align-items: center;
+  line-height: 10vh;
+}
+
+
+.goal-item-pfc-percent {
+  font-size: 3vw;
+  margin-left: 10px;
+}
+
+.goal-item-pfc-value {
+  font-size: 5vw;
+  margin: 0 5px 5px;
+}
+
+.goal-item-pfc-item {
+  font-size: 2vw;
+  margin: 0 5px 0 0 ;
+  padding-top: 5px;
+}
+
+.goal-item-pfc-item-value {
+  font-size: 3vw;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+

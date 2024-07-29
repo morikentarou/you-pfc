@@ -1,0 +1,53 @@
+<%= render "shared/header" %>
+<body class="goals-new">
+  <div class='goal-new'>
+    <div class='goal-contents'>
+      <h3 class='goal-sell-title'>目標を設定する</h3>
+      <div class='goal-graph'>
+        <canvas id="macrosChart"></canvas>
+      </div>
+      <div class='goal-form'>
+        <%= form_with(model: @goal, local: true) do |f| %>
+          
+          <%= render 'shared/error_messages', model: f.object %>
+
+          <div class='goal-form-input'>
+            <div class='goal-form-pfc'>kcal</div>
+            <div class='goal-form-field'>
+              <%= f.number_field :goal_kcal, placeholder: "kcal", id: "goal_kcal" %>
+              <div class='goal-form-kcal'>kcal</div>
+            </div>
+          </div>
+          <div class='goal-form-input'>
+            <div class='goal-form-pfc'>カテゴリー</div>
+            <%= f.collection_select(:pfctype_id, Pfctype.all, :id, :name, {}, { class: "goal-pfctype-select", id: "pfctype_id" }) %>
+          </div>
+          <div class='goal-form-input'>
+            <div class='goal-form-pfc'>タンパク質</div>
+            <div class='goal-form-field'>
+              <%= f.number_field :goal_protein, placeholder: "タンパク質", id: "goal_protein" %>
+              <div class='goal-form-g'>g</div>
+            </div>
+          </div>
+          <div class='goal-form-input'>
+            <div class='goal-form-pfc'>糖質</div>
+            <div class='goal-form-field'>
+              <%= f.number_field :goal_sugar, placeholder: "糖質", id: "goal_sugar" %>
+              <div class='goal-form-g'>g</div>
+            </div>
+          </div>
+          <div class='goal-form-input'>
+            <div class='goal-form-pfc'>脂質</div>
+            <div class='goal-form-field'>
+              <%= f.number_field :goal_oil, placeholder: "脂質", id: "goal_oil" %>
+              <div class='goal-form-g'>g</div>
+            </div>
+          </div>
+          <div class='goal-form-input goal-form-submit'>
+            <%= f.submit "決定する", class: "goal-new-sell-btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>
+</div>
