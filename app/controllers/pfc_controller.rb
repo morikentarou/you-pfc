@@ -1,0 +1,2 @@
+class PfcController < ApplicationController
+end

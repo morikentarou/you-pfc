@@ -1,0 +1,22 @@
+<header class='top-page-header'>
+  <div class="top-page-header-top">
+    <div class="top-pfc">
+      <div class='pfc-icon'>
+        <%= link_to "my-pfc", root_path, class: "pfc-icon" %>
+      </div>
+    </div>
+    <div class='top-page-user-button'>
+      <% if user_signed_in? %>
+        <div><%= link_to current_user.name, "#", class: "user-name" %></div>
+        <div><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></div>
+      <% else %>
+        <div><%= link_to 'ログイン', new_user_session_path, class: "login" %></div>
+        <div><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class='nav'>
+    <div><%= link_to '記録', "#", class: "pfc-new" %></div>
+    <div><%= link_to '目標', goals_path, class: "goal-set" %></div>
+  </div>
+</header>

@@ -1,0 +1,2 @@
+class Pfc < ApplicationRecord
+end
