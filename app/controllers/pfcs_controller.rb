@@ -7,7 +7,10 @@ class PfcsController < ApplicationController
   end
 
   def new
+    @pfc = Pfc.new
   end
+
+  
 
   private
   
