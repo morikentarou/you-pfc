@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_29_123156) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_30_034348) do
   create_table "goals", charset: "utf8", force: :cascade do |t|
     t.integer "goal_kcal", null: false
     t.integer "goal_oil", null: false
@@ -21,6 +21,29 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_123156) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "items", charset: "utf8", force: :cascade do |t|
+    t.string "item_name", null: false
+    t.integer "item_kcal", null: false
+    t.integer "item_oil", null: false
+    t.integer "item_sugar", null: false
+    t.integer "item_protein", null: false
+    t.integer "store_id"
+    t.bigint "user_id", null: false
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "items_pfcs", charset: "utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "pfc_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_items_pfcs_on_item_id"
+    t.index ["pfc_id"], name: "index_items_pfcs_on_pfc_id"
   end
 
   create_table "pfcs", charset: "utf8", force: :cascade do |t|
@@ -43,4 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_123156) do
   end
 
   add_foreign_key "goals", "users"
+  add_foreign_key "items", "users"
+  add_foreign_key "items_pfcs", "items"
+  add_foreign_key "items_pfcs", "pfcs"
 end
