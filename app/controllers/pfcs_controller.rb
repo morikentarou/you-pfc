@@ -1,6 +1,6 @@
 class PfcsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :move_to_index, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show]
   
   def index
     @pfc = Pfc.all
@@ -43,12 +43,12 @@ class PfcsController < ApplicationController
   private
 
   def item_params
-    params.require(:pfc).permit(:,).merge(user_id: current_user.id)
+    params.require(:pfc).permit(:item_id, :day, :time, :timezone_id).merge(user_id: current_user.id)
   end
   
   def move_to_index
     unless user_signed_in?
-      redirect_to action: :index
+      redirect_to root_path, alert: "ログインが必要です"
     end
   end
 

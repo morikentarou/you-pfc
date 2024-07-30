@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
 
   def new
     @item = Item.new
@@ -34,12 +33,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:item_kcal, :item_oil, :item_protein, :item_sugar, :name).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_kcal, :item_oil, :item_protein, :item_sugar, :item_name, :store_id, :remarks).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
 end
