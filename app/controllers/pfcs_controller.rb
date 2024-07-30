@@ -6,6 +6,9 @@ class PfcsController < ApplicationController
     @goal = Goal.find(session[:selected_goal_id]) if session[:selected_goal_id].present?
   end
 
+  def new
+  end
+
   private
   
   def move_to_index
