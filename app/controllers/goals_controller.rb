@@ -2,6 +2,7 @@ class GoalsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :move_to_index
 
   def index
     @goals = current_user.goals.order("created_at DESC")
@@ -60,6 +61,12 @@ class GoalsController < ApplicationController
   def correct_user
     @goal = Goal.find(params[:id])
     redirect_to(root_url) unless current_user == @goal.user
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
 end
