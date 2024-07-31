@@ -7,7 +7,7 @@
       </div>
 <%# グラフ %>
       <div class='item-graph'>
-        グラフ
+        <canvas id="macrosChart"></canvas>
       </div>
       <div class='item-form'>
         <%= form_with(model: @item, local: true) do |f| %>
@@ -21,20 +21,6 @@
               <div class='item-form-field'>
                 <%= f.text_field :item_name, placeholder: "メニュー名", id: "item_name", class: "item-form-field-text" %>
                 <div class='item-form-kcal'>
-                </div>
-              </div>
-            </div>
-          </div>
-<%# カロリー %>
-          <div class='item-form-input'>
-            <div class='item-form-pfc'>
-              合計カロリー
-            </div>
-            <div class="item-form-pfc-right">
-              <div class='item-form-field'>
-                <%= f.number_field :item_kcal, placeholder: "kcal", id: "item_kcal", class: "item-form-field-text"%>
-                <div class='item-form-kcal'>
-                  kcal
                 </div>
               </div>
             </div>
@@ -77,6 +63,20 @@
                 <%= f.number_field :item_oil, placeholder: "脂質", id: "item_oil", class: "item-form-field-text" %>
                 <div class='item-form-g'>
                   g
+                </div>
+              </div>
+            </div>
+          </div>
+<%# 合計カロリー %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              合計カロリー
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.number_field :item_kcal, placeholder: "kcal", id: "item_kcal", class: "item-form-field-text"%>
+                <div class='item-form-kcal'>
+                  kcal
                 </div>
               </div>
             </div>

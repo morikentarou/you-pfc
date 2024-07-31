@@ -6,14 +6,13 @@ import "chartjs-plugin-datalabels"
 document.addEventListener("turbo:load", function() {
   console.log("Turbo load event fired");
 
-  const goalKcalField = document.getElementById("goal_kcal");
-  const pfctypeSelect = document.getElementById("pfctype_id");
-  const goalProteinField = document.getElementById("goal_protein");
-  const goalSugarField = document.getElementById("goal_sugar");
-  const goalOilField = document.getElementById("goal_oil");
+  const goalKcalField = document.getElementById("item_kcal");
+  const goalProteinField = document.getElementById("item_protein");
+  const goalSugarField = document.getElementById("item_sugar");
+  const goalOilField = document.getElementById("item_oil");
   const macrosChartCanvas = document.getElementById("macrosChart");
 
-  if (goalKcalField && pfctypeSelect && goalProteinField && goalSugarField && goalOilField && macrosChartCanvas) {
+  if (goalKcalField && goalProteinField && goalSugarField && goalOilField && macrosChartCanvas) {
 
     let macrosChart;
 
@@ -100,47 +99,24 @@ document.addEventListener("turbo:load", function() {
       }
     }
 
-    function calculateMacros() {
-      const kcal = parseInt(goalKcalField.value);
-      if (isNaN(kcal)) return;
+    function calculateCalories() {
+      const proteinGram = parseInt(goalProteinField.value) || 0;
+      const sugarGram = parseInt(goalSugarField.value) || 0;
+      const oilGram = parseInt(goalOilField.value) || 0;
 
-      // 各マクロ栄養素の割合
-      let proteinPercentage = 0;
-      let sugarPercentage = 0;
-      let oilPercentage = 0;
-
-      const selectedCategory = parseInt(pfctypeSelect.value);
-
-      if (selectedCategory === 2) { // ローファット
-        proteinPercentage = 0.4;
-        sugarPercentage = 0.5;
-        oilPercentage = 0.1;
-      } else if (selectedCategory === 3) { // ケトジェニック
-        proteinPercentage = 0.4;
-        sugarPercentage = 0.1;
-        oilPercentage = 0.5;
-      } else { // その他
-        goalProteinField.value = '';
-        goalSugarField.value = '';
-        goalOilField.value = '';
-        updateChart(0, 0, 0, macrosChartCanvas.id, 0);
-        return;
-      }
-
-      // 各マクロ栄養素のカロリー
-      const proteinGram = Math.floor(kcal * proteinPercentage / 4);
-      const sugarGram = Math.floor(kcal * sugarPercentage / 4);
-      const oilGram = Math.floor(kcal * oilPercentage / 9);
-
-      goalProteinField.value = proteinGram;
-      goalSugarField.value = sugarGram;
-      goalOilField.value = oilGram;
+      const kcal = (proteinGram * 4) + (sugarGram * 4) + (oilGram * 9);
+      goalKcalField.value = Math.floor(kcal);
 
       updateChart(proteinGram, sugarGram, oilGram, macrosChartCanvas.id, kcal);
     }
 
-    goalKcalField.addEventListener("input", calculateMacros);
-    pfctypeSelect.addEventListener("change", calculateMacros);
+    // 各フィールドの入力イベントにリスナーを追加
+    goalProteinField.addEventListener("input", calculateCalories);
+    goalSugarField.addEventListener("input", calculateCalories);
+    goalOilField.addEventListener("input", calculateCalories);
+
+    // 初期値を計算
+    calculateCalories();
 
     // グラフを各ゴールアイテムに描画する
     document.querySelectorAll('.goal-item-graph canvas').forEach(canvas => {
