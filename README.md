@@ -59,7 +59,7 @@ https://docs.google.com/spreadsheets/d/1Ciq_WcrBKKtFXo-ZqkwWbk3HFpdZ3JtbmTfzgR3c
 
 # ローカルでの動作方法
 
-%git clone https://github.com/morikentarou/yuo-pfc
+%git clone https://github.com/morikentarou/you-pfc
 
 %bundle install
 
