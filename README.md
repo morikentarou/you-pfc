@@ -45,11 +45,11 @@ https://docs.google.com/spreadsheets/d/1Ciq_WcrBKKtFXo-ZqkwWbk3HFpdZ3JtbmTfzgR3c
 
 # データベース設定
 
-[text](your-pfc.dio)
+[alt text](your-pfc.dio)
 
 # 画面遷移図
 
-[text](画面遷移図.dio)
+[alt text](画面遷移図.dio)
 
 # 開発環境
 - フロントエンド
