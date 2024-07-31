@@ -1,0 +1,118 @@
+<%= render "shared/header" %>
+<body class="items-new">
+  <div class= "item-new">
+    <div class='item-contents'>
+      <div class='goal-sell-title'>
+        食材を登録する
+      </div>
+<%# グラフ %>
+      <div class='item-graph'>
+        グラフ
+      </div>
+      <div class='item-form'>
+        <%= form_with(model: @item, local: true) do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
+<%# メニュー名 %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              メニュー名
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.text_field :item_name, placeholder: "メニュー名", id: "item_name", class: "item-form-field-text" %>
+                <div class='item-form-kcal'>
+                </div>
+              </div>
+            </div>
+          </div>
+<%# カロリー %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              合計カロリー
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.number_field :item_kcal, placeholder: "kcal", id: "item_kcal", class: "item-form-field-text"%>
+                <div class='item-form-kcal'>
+                  kcal
+                </div>
+              </div>
+            </div>
+          </div>
+<%# タンパク質 %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              タンパク質
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.number_field :item_protein, placeholder: "タンパク質", id: "item_protein", class: "item-form-field-text"%>
+                <div class='item-form-g'>
+                  g
+                </div>
+              </div>
+            </div>
+          </div>
+<%# 糖質 %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              糖質
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.number_field :item_sugwr, placeholder: "糖質", id: "item_sugar", class: "item-form-field-text" %>
+                <div class='item-form-g'>
+                  g
+                </div>
+              </div>
+            </div>
+          </div>
+<%# 脂質 %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              脂質
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.number_field :item_oil, placeholder: "脂質", id: "item_oil", class: "item-form-field-text" %>
+                <div class='item-form-g'>
+                  g
+                </div>
+              </div>
+            </div>
+          </div>
+<%# 入手場所 %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+              入手場所
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.collection_select(:store_id, Store.all, :id, :name, {}, { class: "item-form-field-text", id: "store_id" }) %>
+                <div class='item-form-g'>
+                </div>
+              </div>
+            </div>
+          </div>
+<%# 備考欄 %>
+          <div class='item-form-input'>
+            <div class='item-form-pfc'>
+            </div>
+            <div class="item-form-pfc-right">
+              <div class='item-form-field'>
+                <%= f.text_area :remarks, placeholder: "備考欄", id: "remarks", class: "item-form-field-area"%>
+                <div class='item-form-g'>
+                </div>
+              </div>
+            </div>
+          </div>
+<%# 決定ボタン %>
+          <div class='item-form-input item-form-submit'>
+            <%= f.submit "決定する", class: "item-new-sell-btn" %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

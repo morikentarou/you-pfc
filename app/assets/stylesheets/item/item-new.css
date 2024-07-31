@@ -1,21 +1,23 @@
-.goal-new {
+.items-new {}
+
+.item-new {
   width: 100vw;
-  height: 150%;
+  height: 180vh;
   display: flex;  
   justify-content: center;  
   padding-top: 40px;
 }
 
-.goal-contents {
-  width: 80%;
-  height: 110vh;
+.item-contents {
+  width: 80vw;
+  height: 150vh;
   background-color: aqua;
   display: flex;  
   flex-direction: column;  
   align-items: center; 
 }
 
-.goal-sell-title {
+.item-sell-title {
   background-color: aqua;
   font-size: 40px;
   font-weight: bold;
@@ -26,75 +28,87 @@
   border: 1px solid black;
 }
 
-.goal-graph {
-  height: 50vh;
-  width: 70vw;
+.item-graph {
+ width: 70vw;
+ height: 50vh;
   border: 1px solid black;
   margin-bottom: 10px;
   background-color: antiquewhite;
 }
 
-.goal-form {
+.item-form {
   display: flex;
   flex-direction: column;
   width: 100%; 
 }
 
-.goal-form-input {
+
+.item-form-input {
   background-color: aqua;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 10px 0 15px ;
-  padding: 0 60px;
+  padding-top: 20px;
 }
 
-.goal-form-pfc {
-  flex-grow: 0;
+.item-form-pfc {
+  white-space: nowrap;
+  padding-top: 10px;
+  padding-left: 40px;
 }
 
-.goal-form-field {
+.item-form-pfc-right {
+
+}
+
+.item-form-field {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.goal-form-field input[type="number"]::placeholder {
+.item-form-field input {
+  margin-right: 5px;
+}
+
+.item-form-field input[type="number"]::placeholder {
   text-align: left; 
 }
 
-.goal-form-field input[type="number"] {
+.item-form-field input[type="number"] {
   flex: 1; 
   margin-right: 5px;
   text-align: right; 
 }
 
-.goal-form-field input {
-  margin-right: 5px;
-}
 
-.goal-form-g {
-  margin-left: 5px;
-  padding-right: 20px;
-  white-space: nowrap;
-}
-
-.goal-form-kcal {
+.item-form-kcal {
+  width: 50px;
   margin-left: 5px;
   white-space: nowrap;
 }
 
-.goal-form-submit {
-  margin-top: 35px;
+.item-form-g {
+  width: 50px;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.item-form-field-text {
+  width: 210px;
+}
+
+.item-form-field-area {
+  width: 65vw;
+  height: 100px;
+}
+
+.item-form-submit {
+  margin-top: 30px;
   justify-content: center;
 }
 
-.goal-pfctype-select {
-  margin-right: 38px;
-  width: 225px;
-}
-
-.goal-new-sell-btn {
+.item-new-sell-btn {
   width: 250px;
   height: 50px;
 }

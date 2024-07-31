@@ -2,7 +2,7 @@
 <body class="goals-new">
   <div class='goal-new'>
     <div class='goal-contents'>
-      <h3 class='goal-sell-title'>目標を設定する</h3>
+      <div class='goal-sell-title'>目標を設定する</div>
       <div class='goal-graph'>
         <canvas id="macrosChart"></canvas>
       </div>
@@ -12,7 +12,7 @@
           <%= render 'shared/error_messages', model: f.object %>
 
           <div class='goal-form-input'>
-            <div class='goal-form-pfc'>kcal</div>
+            <div class='goal-form-pfc'>合計カロリー</div>
             <div class='goal-form-field'>
               <%= f.number_field :goal_kcal, placeholder: "kcal", id: "goal_kcal" %>
               <div class='goal-form-kcal'>kcal</div>
@@ -49,5 +49,5 @@
         <% end %>
       </div>
     </div>
-</div>
+ </div>
 </div>

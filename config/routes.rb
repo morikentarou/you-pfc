@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       get 'select'
     end
   end
-  resources :item
+  resources :items
 end
 
