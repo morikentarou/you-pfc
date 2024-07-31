@@ -61,8 +61,6 @@ https://docs.google.com/spreadsheets/d/1Ciq_WcrBKKtFXo-ZqkwWbk3HFpdZ3JtbmTfzgR3c
 
 %git clone https://github.com/morikentarou/yuo-pfc
 
-%cd you-pfc
-
 %bundle install
 
 # 工夫したポイント
