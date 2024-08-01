@@ -4,7 +4,15 @@ class PfcsController < ApplicationController
   
   def index
     @pfc = Pfc.all
-    @goal = Goal.find(session[:selected_goal_id]) if session[:selected_goal_id].present?
+    if session[:selected_goal_id].present?
+      begin
+        @goal = Goal.find(session[:selected_goal_id])
+      rescue ActiveRecord::RecordNotFound
+        session[:selected_goal_id] = nil
+        flash[:alert] = "Selected goal not found. Please select a valid goal."
+        redirect_to root_path 
+      end
+    end
   end
 
   def new

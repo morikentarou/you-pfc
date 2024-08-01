@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_30_034348) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_50_034348) do
   create_table "goals", charset: "utf8", force: :cascade do |t|
     t.integer "goal_kcal", null: false
     t.integer "goal_oil", null: false
@@ -47,8 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_30_034348) do
   end
 
   create_table "pfcs", charset: "utf8", force: :cascade do |t|
+    t.date "day", null: false
+    t.datetime "time", null: false
+    t.integer "timezone_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_pfcs_on_item_id"
+    t.index ["user_id"], name: "index_pfcs_on_user_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -69,4 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_30_034348) do
   add_foreign_key "items", "users"
   add_foreign_key "items_pfcs", "items"
   add_foreign_key "items_pfcs", "pfcs"
+  add_foreign_key "pfcs", "items"
+  add_foreign_key "pfcs", "users"
 end
