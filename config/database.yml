@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: you_pfc_development
+  database: you-pfc_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: you_pfc_test
+  database: you-pfc_test
 
 production:
   <<: *default
