@@ -5,7 +5,7 @@ default: &default
 development:
   <<: *default
   adapter: mysql2
-  username: you_pfc_k0ya_user
+  username: root
   password: 
   host: localhost
   database: you_pfc_k0ya
@@ -13,15 +13,12 @@ development:
 test:
   <<: *default
   adapter: mysql2
-  username: you_pfc_k0ya_user
+  username: root
   password:
   host: localhost
   database: you_pfc_k0ya_test
 
 production:
   <<: *default
-  adapter: mysql2
-  username: you_pfc_k0ya_user
-  database: you_pfc_k0ya
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
