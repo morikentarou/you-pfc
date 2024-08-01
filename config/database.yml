@@ -5,18 +5,18 @@ default: &default
 development:
   <<: *default
   adapter: mysql2
-  username: root
-  password:
+  username: you_pfc_k0ya_user
+  password: 
   host: localhost
-  database: you-pfc_development
+  database: you_pfc_k0ya
 
 test:
   <<: *default
   adapter: mysql2
-  username: root
+  username: you_pfc_k0ya_user
   password:
   host: localhost
-  database: you-pfc_test
+  database: you_pfc_k0ya_test
 
 production:
   <<: *default
