@@ -4,7 +4,7 @@ class Timezone < ActiveHash::Base
    { id: 2, name: '朝' },
    { id: 3, name: '昼' },
    { id: 4, name: '夜' },
-   { id: 4, name: '間食' },
+   { id: 5, name: '間食' },
  ]
 
  include ActiveHash::Associations
