@@ -20,5 +20,6 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: mysql2
+  username: you_pfc_k0ya_user
+  database: you_pfc_k0ya
