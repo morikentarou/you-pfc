@@ -71,9 +71,10 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'devise'
+gem 'active_hash'
+
 group :production do
   gem 'pg'
 end
 
-gem 'devise'
-gem 'active_hash'
