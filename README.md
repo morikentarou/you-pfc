@@ -12,6 +12,8 @@ yuor-pfc
 
 - メールアドレス:aaa@gmail.com
 - パスワード:aaaaaa
+- Basic認証ID:you-pfc
+- Basic認証パスワード:40398
 
 # 利用方法
 
