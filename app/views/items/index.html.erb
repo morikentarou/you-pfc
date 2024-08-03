@@ -1,20 +1,24 @@
 <%= render "shared/header" %>
 
 <div class='goal-search'>
-    <%= form_with(url: search_goals_path, local: true, method: :get, class: "goal-search-form") do |form| %>
-      <%= form.collection_select :pfctype_id, Pfctype.all, :id, :name, { include_blank: 'すべて' }, class: "goal-search-input" %>
-      <%= form.submit "検索", class: "goal-search-btn" %>
-    <% end %>
+  <%= form_with(url: search_goals_path, local: true, method: :get, class: "goal-search-form") do |form| %>
+    <%= form.collection_select :pfctype_id, Pfctype.all, :id, :name, { include_blank: 'すべて' }, class: "goal-search-input" %>
+    <%= form.submit "検索", class: "goal-search-btn" %>
+  <% end %>
 </div>
 
 <div>
-  <% @goals.each do |goal| %>
-  <%= content_tag :span, item.item_name %> 
-  <%= content_tag :span, item.item_kcal %> 
-  <%= content_tag :span, item.item_protein %> 
-  <%= content_tag :span, item.item_oil %> 
-  <%= content_tag :span, item.item_sugar %>
-  <%= content_tag :span, item.store.name %>  
-  <%= content_tag :span, item.remarks %>  
+  <% if @items.present? %>
+    <% @items.each do |item| %>
+      <%= content_tag :span, item.item_name %>
+      <%= content_tag :span, item.item_kcal %>
+      <%= content_tag :span, item.item_protein %>
+      <%= content_tag :span, item.item_oil %>
+      <%= content_tag :span, item.item_sugar %>
+      <%= content_tag :span, Store.find(item.store_id).name %> 
+      <%= content_tag :span, item.remarks %>
+    <% end %>
+  <% else %>
+    <p>No items found.</p>
   <% end %>
 </div>

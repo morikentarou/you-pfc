@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :pfcs
   has_many :goals
+  has_many :items
 
   validates :name,               presence: true
   validates :birthday,           presence: true
