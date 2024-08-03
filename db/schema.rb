@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_50_034348) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_03_091141) do
   create_table "goals", charset: "utf8", force: :cascade do |t|
     t.integer "goal_kcal", null: false
     t.integer "goal_oil", null: false
@@ -37,13 +37,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_50_034348) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "items_pfcs", charset: "utf8", force: :cascade do |t|
+  create_table "pfc_items", charset: "utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "pfc_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_items_pfcs_on_item_id"
-    t.index ["pfc_id"], name: "index_items_pfcs_on_pfc_id"
+    t.index ["item_id"], name: "index_pfc_items_on_item_id"
+    t.index ["pfc_id"], name: "index_pfc_items_on_pfc_id"
   end
 
   create_table "pfcs", charset: "utf8", force: :cascade do |t|
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_50_034348) do
 
   add_foreign_key "goals", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "items_pfcs", "items"
-  add_foreign_key "items_pfcs", "pfcs"
+  add_foreign_key "pfc_items", "items"
+  add_foreign_key "pfc_items", "pfcs"
   add_foreign_key "pfcs", "items"
   add_foreign_key "pfcs", "users"
 end

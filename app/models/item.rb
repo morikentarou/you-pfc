@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-  has_many :items_pfcs
-  has_many :pfcs, through: :items_pfcs
+  has_many :pfc_items
+  has_many :pfcs, through: :pfc_items
 
   belongs_to :user
   

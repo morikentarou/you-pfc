@@ -1,2 +1,16 @@
 <%= render "shared/header" %>
-aa
+<%= form_with(model: @pfc, local: true) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :items, "Select Items" %>
+    <%= form.collection_check_boxes :item_ids, Item.all, :id, :item_name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

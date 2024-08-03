@@ -22,7 +22,7 @@ class PfcsController < ApplicationController
   def create
     @pfc = Pfc.new(pfc_params)
     if @pfc.save
-      redirect_to root_path
+      redirect_to @pfc, notice: 'Pfc was successfully created.'
     else
       render :new
     end
