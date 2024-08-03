@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+
 <%= form_with(model: @pfc, local: true) do |form| %>
   <div>
     <%= form.label :name %>
@@ -14,3 +15,9 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<div>
+  <%= link_to new_item_path do %>
+        <span >登録する</span>
+  <% end %>
+</div>

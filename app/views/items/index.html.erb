@@ -8,6 +8,12 @@
 </div>
 
 <div>
+  <%= link_to new_item_path do %>
+        <span >登録する</span>
+  <% end %>
+</div>
+
+<div>
   <% if @items.present? %>
     <% @items.each do |item| %>
       <%= content_tag :span, item.item_name %>
