@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
 
+  def index 
+    @item = current_user.items.order("created_at DESC")
+    @items = @items.where('name LIKE ?', "%#{params[:keyword]}%") if params[:keyword].present?
+    @items = @items.where(store_id: params[:store_id]) if params[:store_id].present?
+    Rails.logger.debug "Items: #{@items.inspect}"
+  end
+
   def new
     @item = Item.new
   end
@@ -28,6 +35,13 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     goal.update(item_params)
     redirect_to items_path
+  end
+
+  def search
+    @items = current_user.items.order("created_at DESC")
+    @items = @items.where('name LIKE ?', "%#{params[:keyword]}%") if params[:keyword].present?
+    @items = @s.where(store_id: params[:store_id]) if params[:store_id].present?
+    render :index
   end
 
   private

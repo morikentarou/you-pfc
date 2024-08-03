@@ -20,7 +20,7 @@ class PfcsController < ApplicationController
   end
 
   def create
-    @pfc = Pfc.new(item_params)
+    @pfc = Pfc.new(pfc_params)
     if @pfc.save
       redirect_to root_path
     else
@@ -50,7 +50,7 @@ class PfcsController < ApplicationController
 
   private
 
-  def item_params
+  def pfc_params
     params.require(:pfc).permit(:item_id, :day, :time, :timezone_id).merge(user_id: current_user.id)
   end
   

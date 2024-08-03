@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root 'pfcs#index'
+
   resources :pfcs
+
   resources :goals do
     collection do
       get 'search'
@@ -10,6 +13,12 @@ Rails.application.routes.draw do
       get 'select'
     end
   end
-  resources :items
+
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
+  
 end
 
