@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
       // クリックされたボタンからデータを取得
       const itemId = button.getAttribute('data-item-id');
       const itemName = button.getAttribute('data-item-name');
+      const itemKcal = button.getAttribute('data-item-kcal');
+      const itemProtein = button.getAttribute('data-item-protein');
+      const itemSugar = button.getAttribute('data-item-sugar');
+      const itemOil = button.getAttribute('data-item-oil');
       
       // 「選択中食材一覧」エリアにアイテムを追加
       const selectedItemsList = document.querySelector('.pfc-item-select-index ul');
@@ -14,15 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const existingItem = selectedItemsList.querySelector(`[data-item-id="${itemId}"]`);
         if (!existingItem) {
           const listItem = document.createElement('li');
-          listItem.textContent = itemName;
           listItem.setAttribute('data-item-id', itemId);
           
-          // 取り消しボタンを追加
-          const removeButton = document.createElement('button');
-          removeButton.textContent = '取り消し';
-          removeButton.classList.add('remove-item-button');
-          removeButton.setAttribute('data-item-id', itemId);
-          listItem.appendChild(removeButton);
+          // アイテムの詳細情報を表示
+          listItem.innerHTML = `
+            <div>
+              名前: ${itemName} <br>
+              カロリー: ${itemKcal} kcal <br>
+              プロテイン: ${itemProtein} g <br>
+              糖質: ${itemSugar} g <br>
+              脂質: ${itemOil} g <br>
+              <button class="remove-item-button" data-item-id="${itemId}">取り消し</button>
+            </div>
+          `;
           
           selectedItemsList.appendChild(listItem);
         }
@@ -30,15 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // リストが存在しない場合は作成する
         const newList = document.createElement('ul');
         const listItem = document.createElement('li');
-        listItem.textContent = itemName;
         listItem.setAttribute('data-item-id', itemId);
         
-        // 取り消しボタンを追加
-        const removeButton = document.createElement('button');
-        removeButton.textContent = '取り消し';
-        removeButton.classList.add('remove-item-button');
-        removeButton.setAttribute('data-item-id', itemId);
-        listItem.appendChild(removeButton);
+        // アイテムの詳細情報を表示
+        listItem.innerHTML = `
+          <div>
+            名前: ${itemName} <br>
+            カロリー: ${itemKcal} kcal <br>
+            プロテイン: ${itemProtein} g <br>
+            糖質: ${itemSugar} g <br>
+            脂質: ${itemOil} g <br>
+            <button class="remove-item-button" data-item-id="${itemId}">取り消し</button>
+          </div>
+        `;
         
         newList.appendChild(listItem);
         
@@ -66,3 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
