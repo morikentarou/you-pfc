@@ -2,5 +2,9 @@
   <div>
     <%= check_box_tag 'pfc[item_ids][]', item.id %>
     <%= item.item_name %>
+    <%= item.item_kcal %> kcal
+    <%= item.item_protein %> g プロテイン
+    <%= item.item_sugar %> g 糖質
+    <%= item.item_oil %> g 脂質
   </div>
 <% end %>

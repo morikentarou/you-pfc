@@ -17,7 +17,7 @@ class PfcsController < ApplicationController
 
   def new
     @pfc = Pfc.new
-    @items = Item.all
+    @items = current_user.items
     if params[:keyword].present?
       @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
     end
