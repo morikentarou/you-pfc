@@ -1,10 +1,10 @@
 <% items.each do |item| %>
   <div>
-    <%= check_box_tag 'pfc[item_ids][]', item.id %>
     <%= item.item_name %>
     <%= item.item_kcal %> kcal
     <%= item.item_protein %> g プロテイン
     <%= item.item_sugar %> g 糖質
     <%= item.item_oil %> g 脂質
+    <%= button_to '追加', '#', class: 'add-item-button', data: { item_id: item.id, item_name: item.item_name } %>
   </div>
 <% end %>

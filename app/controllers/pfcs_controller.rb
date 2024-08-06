@@ -56,7 +56,7 @@ class PfcsController < ApplicationController
   private
 
   def pfc_params
-    params.require(:pfc).permit(:day, :timezone_id, :time, :item_id, item_ids: []).merge(user_id: current_user.id)
+    params.require(:pfc).permit(:day, :timezone_id, :time, item_ids: []).merge(user_id: current_user.id)
   end
   
   def move_to_index

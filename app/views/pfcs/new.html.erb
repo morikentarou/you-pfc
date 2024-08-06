@@ -13,6 +13,15 @@
 
     <div class="pfc-item-select-index">
       選択中食材一覧
+      <% if @pfc.item_ids.any? %>
+        <ul>
+          <% @pfc.items.each do |item| %>
+            <li><%= item.item_name %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>選択されていません</p>
+      <% end %>
     </div>
 
     <div class="pfc-item-new-button">
