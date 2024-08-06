@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'pfcs#index'
 
-  resources :pfcs
+  resources :pfcs, only: [:new, :create]
 
   resources :goals do
     collection do

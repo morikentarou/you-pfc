@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
       @items = current_user.items.order("created_at DESC")
       @items = @items.where('name LIKE ?', "%#{params[:keyword]}%") if params[:keyword].present?
       @items = @items.where(store_id: params[:store_id]) if params[:store_id].present?
-      Rails.logger.debug "Filtered Items: #{@items.inspect}"
     else
       @items = []
     end
@@ -44,12 +43,6 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-  def search
-    @items = current_user.items.order("created_at DESC")
-    @items = @items.where('name LIKE ?', "%#{params[:keyword]}%") if params[:keyword].present?
-    @items = @s.where(store_id: params[:store_id]) if params[:store_id].present?
-    render :index
-  end
 
   private
 

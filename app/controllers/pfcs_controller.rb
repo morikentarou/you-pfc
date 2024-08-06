@@ -17,13 +17,18 @@ class PfcsController < ApplicationController
 
   def new
     @pfc = Pfc.new
+    @items = Item.all
+    if params[:keyword].present?
+      @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
+    end
   end
 
   def create
     @pfc = Pfc.new(pfc_params)
     if @pfc.save
-      redirect_to @pfc, notice: 'Pfc was successfully created.'
+      redirect_to @pfc, notice: 'PFC was successfully created.'
     else
+      @items = Item.all
       render :new
     end
   end
@@ -51,7 +56,7 @@ class PfcsController < ApplicationController
   private
 
   def pfc_params
-    params.require(:pfc).permit(:item_id, :day, :time, :timezone_id).merge(user_id: current_user.id)
+    params.require(:pfc).permit(:day, :timezone_id, :time, :item_id, item_ids: []).merge(user_id: current_user.id)
   end
   
   def move_to_index

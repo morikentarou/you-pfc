@@ -10,3 +10,4 @@ pin "chartjs-plugin-datalabels", to: "https://cdn.jsdelivr.net/npm/chartjs-plugi
 pin "new_goal", to: "new_goal.js"
 pin "index_goal", to: "index_goal.js"
 pin "new_item", to: "new_item.js"
+pin "new_pfc", to: "new_pfc.js"

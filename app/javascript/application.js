@@ -6,3 +6,4 @@ import "chartjs-plugin-datalabels";
 import "./new_goal.js"
 import "./index_goal.js"
 import "./new_item.js"
+import "./new_pfc.js"
