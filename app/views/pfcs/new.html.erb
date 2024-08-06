@@ -1,20 +1,30 @@
 <%= render "shared/header" %>
+<div class='pfc-graph'>
+  グラフ
+</div>
 
-<%= form_with(model: @pfc, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class='pfc-contents'>
+  <%= form_with(model: @pfc, local: true) do |form| %>
+    <div class='pfc-contents-top'>
+      <%= form.collection_select(:timezone_id, Timezone.all, :id, :name, {}, { class: "pfc-timezone-select", id: "timezone_id" }) %>
+      <%= form.time_field :time, class: "pfc-time-select", value: Time.now.strftime("%H:%M") %>
+    </div>
 
-  <div>
-    <%= form.label :items, "Select Items" %>
-    <%= form.collection_check_boxes :item_ids, Item.all, :id, :item_name %>
-  </div>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div>
+      <%= form.label :items, "Select Items" %>
+      <%= form.collection_check_boxes :item_ids, Item.all, :id, :item_name %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
 
 <div>
   <%= link_to new_item_path do %>
