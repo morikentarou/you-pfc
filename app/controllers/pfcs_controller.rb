@@ -10,7 +10,7 @@ class PfcsController < ApplicationController
       rescue ActiveRecord::RecordNotFound
         session[:selected_goal_id] = nil
         flash[:alert] = "Selected goal not found. Please select a valid goal."
-        redirect_to root_path 
+        redirect_to root_path
       end
     end
   end
@@ -24,11 +24,12 @@ class PfcsController < ApplicationController
   end
 
   def create
+    Rails.logger.debug("PFC Params: #{pfc_params.inspect}")
     @pfc = Pfc.new(pfc_params)
     if @pfc.save
       redirect_to @pfc, notice: 'PFC was successfully created.'
     else
-      @items = Item.all
+      @items = current_user.items
       render :new
     end
   end
@@ -58,7 +59,7 @@ class PfcsController < ApplicationController
   def pfc_params
     params.require(:pfc).permit(:day, :timezone_id, :time, item_ids: []).merge(user_id: current_user.id)
   end
-  
+
   def move_to_index
     unless user_signed_in?
       redirect_to root_path, alert: "ログインが必要です"

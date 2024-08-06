@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const listItem = document.createElement('li');
           listItem.setAttribute('data-item-id', itemId);
           
-          // アイテムの詳細情報を表示
+          // アイテムの詳細情報を表示とチェックボックスを追加
           listItem.innerHTML = `
             <div>
+              <input type="hidden" name="pfc[item_ids][]" value="${itemId}">
               名前: ${itemName} <br>
               カロリー: ${itemKcal} kcal <br>
               プロテイン: ${itemProtein} g <br>
@@ -40,9 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const listItem = document.createElement('li');
         listItem.setAttribute('data-item-id', itemId);
         
-        // アイテムの詳細情報を表示
+        // アイテムの詳細情報を表示とチェックボックスを追加
         listItem.innerHTML = `
           <div>
+            <input type="hidden" name="pfc[item_ids][]" value="${itemId}">
             名前: ${itemName} <br>
             カロリー: ${itemKcal} kcal <br>
             プロテイン: ${itemProtein} g <br>
@@ -78,4 +80,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-

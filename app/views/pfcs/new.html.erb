@@ -11,6 +11,12 @@
       <%= form.time_field :time, class: "pfc-time-select-time", value: Time.now.strftime("%H:%M") %>
     </div>
 
+    <div class="pfc-item-new-button">
+      <%= link_to new_item_path do %>
+        <span>新しい食材を登録する</span>
+      <% end %>
+    </div>
+
     <div class="pfc-item-select-index">
       選択中食材一覧
       <% if @pfc.item_ids.any? %>
@@ -24,11 +30,6 @@
       <% end %>
     </div>
 
-    <div class="pfc-item-new-button">
-      <%= link_to new_item_path do %>
-        <span>新しい食材を登録する</span>
-      <% end %>
-    </div>
 
     <div>
       <%= form.submit "保存" %>
