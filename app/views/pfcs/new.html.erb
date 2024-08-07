@@ -3,37 +3,13 @@
   グラフ
 </div>
 
-<div class='pfc-contents'>
-  <%= form_with(model: @pfc, local: true) do |form| %>
-    <div class='pfc-contents-top'>
-      <%= form.date_field :day, class: "pfc-time-select-day", value: Date.today %>
-      <%= form.collection_select(:timezone_id, Timezone.all, :id, :name, {}, { class: "pfc-timezone-select", id: "timezone_id" }) %>
-      <%= form.time_field :time, class: "pfc-time-select-time", value: Time.now.strftime("%H:%M") %>
-    </div>
+<div class="pfc-item-select-index">
+  選択中食材一覧
+</div>
 
-    <div class="pfc-item-new-button">
-      <%= link_to new_item_path do %>
-        <span>新しい食材を登録する</span>
-      <% end %>
-    </div>
-
-    <div class="pfc-item-select-index">
-      選択中食材一覧
-      <% if @pfc.item_ids.any? %>
-        <ul>
-          <% @pfc.items.each do |item| %>
-            <li><%= item.item_name %></li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>選択されていません</p>
-      <% end %>
-    </div>
-
-
-    <div>
-      <%= form.submit "保存" %>
-    </div>
+<div class="pfc-item-new-button">
+  <%= link_to new_item_path do %>
+    <span>新しい食材を登録する</span>
   <% end %>
 </div>
 
@@ -41,16 +17,27 @@
   アイテム一覧
   <div>
     <!-- 検索フォーム -->
-    <%= form_with(url: new_pfc_path, method: :get, local: false, id: "item-search-form") do |search_form| %>
+    <%= form_with(url: new_pfc_path, method: :get, local: true, id: "item-search-form") do |search_form| %>
       <%= search_form.text_field :keyword, placeholder: "食材を検索" %>
       <%= search_form.submit "検索" %>
     <% end %>
   </div>
+</div>
+
+<!-- フォームに追加するアイテムのチェックボックス -->
+<%= form_with(model: @pfc, local: true) do |form| %>
+  <!-- その他のフォームフィールド -->
+  <%= form.date_field :day, class: "pfc-time-select-day", value: Date.today %>
+  <%= form.collection_select(:timezone_id, Timezone.all, :id, :name, {}, { class: "pfc-timezone-select", id: "timezone_id" }) %>
+  <%= form.time_field :time, class: "pfc-time-select-time", value: Time.now.strftime("%H:%M") %>
+
+  <%= form.collection_check_boxes :item_ids, Item.all, :id, :item_name %>
 
   <div>
-    <%= turbo_frame_tag "search_results" do %>
-      <%= render partial: 'items/search_results', locals: { items: @items } %>
-    <% end %>
+    <%= form.submit "保存" %>
   </div>
-</div>
+<% end %>
+
+
+
 

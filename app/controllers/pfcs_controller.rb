@@ -24,10 +24,9 @@ class PfcsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug("PFC Params: #{pfc_params.inspect}")
     @pfc = Pfc.new(pfc_params)
     if @pfc.save
-      redirect_to @pfc, notice: 'PFC was successfully created.'
+      redirect_to root_path
     else
       @items = current_user.items
       render :new
@@ -57,7 +56,7 @@ class PfcsController < ApplicationController
   private
 
   def pfc_params
-    params.require(:pfc).permit(:day, :timezone_id, :time, item_ids: []).merge(user_id: current_user.id)
+    params.require(:pfc).permit(:day, :time, :timezone_id, :time, item_ids: []).merge(user_id: current_user.id)
   end
 
   def move_to_index

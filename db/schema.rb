@@ -51,10 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_03_091141) do
     t.datetime "time", null: false
     t.integer "timezone_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_pfcs_on_item_id"
     t.index ["user_id"], name: "index_pfcs_on_user_id"
   end
 
@@ -76,6 +74,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_03_091141) do
   add_foreign_key "items", "users"
   add_foreign_key "pfc_items", "items"
   add_foreign_key "pfc_items", "pfcs"
-  add_foreign_key "pfcs", "items"
   add_foreign_key "pfcs", "users"
 end

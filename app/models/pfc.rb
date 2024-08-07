@@ -1,10 +1,10 @@
 class Pfc < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :timezone
   has_many :pfc_items
   has_many :items, through: :pfc_items
-
+  
   belongs_to :user
+  belongs_to :timezone
 
   validates :day,                 presence: true
   validates :time,                presence: true
