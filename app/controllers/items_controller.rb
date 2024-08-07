@@ -45,10 +45,11 @@ class ItemsController < ApplicationController
 
   def search
     @items = current_user.items
+  
     if params[:keyword].present?
       @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
     end
-
+  
     if request.xhr?
       render partial: 'search_results', locals: { items: @items }
     else
@@ -68,5 +69,5 @@ class ItemsController < ApplicationController
     items = items.where(store_id: params[:store_id]) if params[:store_id].present?
     items
   end
-  
+
 end

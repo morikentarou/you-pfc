@@ -32,7 +32,15 @@
   <%= form.time_field :time, class: "pfc-time-select-time", value: Time.now.strftime("%H:%M") %>
 
   <div id="search-results">
-    <%= form.collection_check_boxes :item_ids, Item.all, :id, :item_name %>
+    <% @items.each do |item| %>
+      <div class="item-checkbox-percentage">
+        <%= check_box_tag 'pfc[item_ids][]', item.id, @pfc.item_ids.include?(item.id), class: 'item-checkbox', data: { item_id: item.id } %>
+        <%= label_tag "pfc_item_#{item.id}", item.item_name %>
+        
+        <%= number_field_tag "pfc[adjustment_percentages][#{item.id}]", 100, step: 0.1, min: 0, id: "percentage_#{item.id}", style: 'display: none;' %>
+        <%= label_tag "percentage_#{item.id}", " (%)" %>
+      </div>
+    <% end %>
   </div>
 
   <div>

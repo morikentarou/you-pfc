@@ -40,6 +40,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_03_091141) do
   create_table "pfc_items", charset: "utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "pfc_id", null: false
+    t.integer "adjusted_kcal"
+    t.integer "adjusted_protein"
+    t.integer "adjusted_oil"
+    t.integer "adjusted_sugar"
+    t.float "adjustment_percentage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_pfc_items_on_item_id"
