@@ -1,17 +1,3 @@
-<% items.each do |item| %>
-  <div>
-    <%= item.item_name %>
-    <%= item.item_kcal %> kcal
-    <%= item.item_protein %> g プロテイン
-    <%= item.item_sugar %> g 糖質
-    <%= item.item_oil %> g 脂質
-    <%= button_to '追加', '#', class: 'add-item-button', data: { 
-          item_id: item.id, 
-          item_name: item.item_name, 
-          item_kcal: item.item_kcal, 
-          item_protein: item.item_protein, 
-          item_sugar: item.item_sugar, 
-          item_oil: item.item_oil 
-    } %>
-  </div>
+<%= form_with(model: @pfc, local: true) do |form| %>
+  <%= form.collection_check_boxes :item_ids, items, :id, :item_name %>
 <% end %>

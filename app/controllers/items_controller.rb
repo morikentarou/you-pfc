@@ -43,6 +43,18 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def search
+    @items = current_user.items
+    if params[:keyword].present?
+      @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
+    end
+
+    if request.xhr?
+      render partial: 'search_results', locals: { items: @items }
+    else
+      @items = Item.all
+    end
+  end
 
   private
 
@@ -50,4 +62,11 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:item_kcal, :item_oil, :item_protein, :item_sugar, :item_name, :store_id, :remarks).merge(user_id: current_user.id)
   end
 
+  def filtered_items(scope)
+    items = scope.order("created_at DESC")
+    items = items.where('item_name LIKE ?', "%#{params[:keyword]}%") if params[:keyword].present?
+    items = items.where(store_id: params[:store_id]) if params[:store_id].present?
+    items
+  end
+  
 end
