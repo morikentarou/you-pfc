@@ -45,9 +45,10 @@ class ItemsController < ApplicationController
 
   def search
     @items = current_user.items
-  
+    
     if params[:keyword].present?
       @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
+      @pfc = Pfc.new
     end
   
     if request.xhr?

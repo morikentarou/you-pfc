@@ -1,8 +1,4 @@
 document.addEventListener('turbo:load', () => {
-  const searchForm = document.getElementById('item-search-form');
-  const searchKeyword = document.getElementById('item-search-keyword');
-
-  // チェックボックスの変化に応じて％フィールドの表示/非表示を制御
   const togglePercentageFields = () => {
     document.querySelectorAll('input[name="pfc[item_ids][]"]').forEach(checkbox => {
       const itemId = checkbox.value;
@@ -25,33 +21,4 @@ document.addEventListener('turbo:load', () => {
       togglePercentageFields();
     }
   });
-
-  if (searchForm && searchKeyword) {
-    searchKeyword.addEventListener('input', () => {
-      const keyword = searchKeyword.value;
-      const currentPercentages = getAdjustmentPercentages();
-
-      fetch(`${searchForm.action}?keyword=${encodeURIComponent(keyword)}`, {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        }
-      })
-      .then(response => response.text())
-      .then(html => {
-        const results = document.getElementById('search-results');
-        if (results) {
-          results.innerHTML = html;
-
-          // 保存したデータを再適用
-          setAdjustmentPercentages(currentPercentages);
-
-          // 検索結果のチェックボックスの状態に応じて％フィールドを調整
-          togglePercentageFields();
-        }
-      })
-      .catch(error => console.error('Error:', error));
-    });
-  }
 });
-
-
