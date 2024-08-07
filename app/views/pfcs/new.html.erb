@@ -26,6 +26,7 @@
 
 <!-- フォームに追加するアイテムのチェックボックス -->
 <%= form_with(model: @pfc, local: true) do |form| %>
+
   <!-- その他のフォームフィールド -->
   <%= form.date_field :day, class: "pfc-time-select-day", value: Date.today %>
   <%= form.collection_select(:timezone_id, Timezone.all, :id, :name, {}, { class: "pfc-timezone-select", id: "timezone_id" }) %>

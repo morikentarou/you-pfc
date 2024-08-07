@@ -26,9 +26,15 @@ class PfcsController < ApplicationController
   def create
     @pfc = Pfc.new(pfc_params)
     @pfc.user = current_user
-
+    @items = current_user.items
     selected_item_ids = params[:pfc][:item_ids] || []
     adjustment_percentages = params[:pfc][:adjustment_percentages] || {}
+
+    if selected_item_ids.blank?
+      @pfc.errors.add(:item_ids, "を選択してください。")
+      render :new
+      return
+    end
 
     selected_item_ids.each do |item_id|
       percentage = adjustment_percentages[item_id.to_s] || 100
