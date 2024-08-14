@@ -1,45 +1,102 @@
+.pfc-new-pfc{
+  display: flex;
+  justify-content: center;
+}
+
+.pfc-base{
+  width: 100vw;
+  max-width: 1000px; 
+  min-height: 600px;
+  background-color:aqua;
+  margin: 40px 0 80px;
+  padding: 20px 0 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pfc-sell-title{
+  font-size: 40px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  color: #f5f5f5;
+  -webkit-text-stroke: 1px black;
+  border: 1px solid black;
+}
+
 /* グラフ */
 .pfc-graph{
-
+  height: 50vh;
+  width: 70vw;
+  max-width: 600px; 
+  border: 1px solid black;
+  margin-bottom: 10px;
+  background-color: antiquewhite;
 }
 
-/* 値 */
-.pfc-contents{
-
-}
-/* 時間選択 */
-.pfc-contents-top{
-
-}
-
-.pfc-time-select-day{
-
+/* 食材の追加 */
+.pfc-item-new-button{
+  padding: 10px;
+  margin: 10px;
+  background: #3ccace;
+  border-radius: 10%;
 }
 
-.pfc-timezone-select{
-
-}
-
-.pfc-time-select-time{
-
-}
-
-/* 選択食材一覧 */
-.pfc-item-select-index{
-
+.pfc-item-new-link{
+  color: #f5f5f5;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  -webkit-text-stroke: 1px black;
 }
 
 /* 検索欄 */
-.pfc-item-search{
+.pfc-item-search-keyword{
+  width: 70vw;
+  max-width: 350px; 
+  margin: 10px 0 ;
+  font-size: 20px;
+}
+
+/* 食材情報登録 */
+/* 時間日付 */
+.pfc-item-regisration{
 
 }
 
-/* 食材選択欄 */
-.pfc-item-regisration-index{
-
+.pfc-item-time{
+  text-align: center;
+  font-size: 20px;
 }
 
-.pfc-item-new-button{
-  
+.pfc-time-select-day{
+  width: 25vw;
+  max-width: 250px; 
 }
 
+.pfc-timezone-select{
+  width: 20vw;
+  max-width: 150px; 
+}
+
+.pfc-time-select-time{
+  width: 20vw;
+  max-width: 150px; 
+}
+
+/* 食材一覧 */
+.pfc-item-regisration-index-title{
+  font-weight: bold;
+  margin: 10px ;
+}
+
+.pfc-item-form-submit{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pfc-item-sell-btn{
+  width: 250px;
+  height: 50px;
+}
