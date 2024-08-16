@@ -5,17 +5,17 @@
         <%= check_box_tag 'pfc[item_ids][]', item.id, @pfc.item_ids.include?(item.id), class: 'item-checkbox', data: { item_id: item.id } %>
       </div>
       <div class="item-pfc-percentage-graph">
-        グラフ
+        <canvas id="macrosChart_<%= item.id %>"></canvas>
       </div>
       <div class="item-pfc-percentage-index">
         <div class="item-pfc-percentage-item-name">
           <%= label_tag "pfc_item_#{item.id}", item.item_name %>
         </div>
         <div class="item-pfc-percentage-index-item">
-          <%= item.item_kcal %>kcal
-          タンパク質<%= item.item_protein %>g
-          糖質<%= item.item_sugar %>g
-          脂質<%= item.item_oil %>g
+          <div class="item-pfc-percentage-index-item-contents">カロリー  <span class="item-pfc-percentage-index-item-value" id="item-kcal_<%= item.id %>"><%= item.item_kcal %></span> kcal</div>
+          <div class="item-pfc-percentage-index-item-contents">タンパク質  <span class="item-pfc-percentage-index-item-value" id="item-protein_<%= item.id %>"><%= item.item_protein %></span> g</div>
+          <div class="item-pfc-percentage-index-item-contents">糖質  <span class="item-pfc-percentage-index-item-value" id="item-sugar_<%= item.id %>"><%= item.item_sugar %></span> g</div>
+          <div class="item-pfc-percentage-index-item-contents">脂質  <span class="item-pfc-percentage-index-item-value" id="item-oil_<%= item.id %>"><%= item.item_oil %></span> g</div>
         </div>
       </div>
       <div class="item-pfc-percentage-ratio">

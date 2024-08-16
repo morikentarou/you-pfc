@@ -8,3 +8,5 @@ import "./index_goal.js"
 import "./new_item.js"
 import "./new_pfc.js"
 import "./new_item_search.js"
+import "./pfc_item_search.js"
+

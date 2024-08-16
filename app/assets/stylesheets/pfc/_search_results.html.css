@@ -3,25 +3,37 @@
   max-width: 600px; 
   display: flex;
   min-height: 100px; 
-  height: 15vh;
+  height: 23vh;
   background-color: aliceblue;
   margin: 10px 0;
 }
 
 .item-pfc-checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 5vw;
   max-width: 120px; 
   min-width: 35px;
   border: 1px solid black;
 }
 
+
 .item-pfc-percentage-graph{
+  position: relative;
   width: 25vw;
   max-width: 210px; 
   min-width: 160px; 
   border: 1px solid black;
   border-left: none;
   background-color: antiquewhite;
+  overflow: hidden;
+}
+
+#macrosChart{
+  width: 100% !important;
+  height: 100% !important;
+  transform-origin: center;
 }
 
 .item-pfc-percentage-index{
@@ -33,11 +45,27 @@
 
 .item-pfc-percentage-item-name{
   border-bottom: 1px solid black;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.item-pfc-percentage-index-item-value{
+  font-weight: bold;
+  padding-left: 10px;
 }
 
 .item-pfc-percentage-index-item{
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18vh;
+  padding: 10px 10px;
 }
+
 
 .item-pfc-percentage-ratio{
   display: flex;
@@ -47,11 +75,14 @@
   border: 1px solid black;
   border-left: none;
   background-color: aliceblue;
+  padding: 0 4px;
 }
 
 .item-pfc-new-percentage-input{
-  width: 10vw;
+  width: 9vw;
   max-width: 100px; 
   background-color: aliceblue;
 }
+
+
 
