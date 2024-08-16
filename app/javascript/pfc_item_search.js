@@ -38,12 +38,12 @@ document.addEventListener('turbo:load', () => {
     const totalProtein = checkedItems.reduce((sum, item) => sum + (item.protein * item.percentage / 100), 0);
     const totalSugar = checkedItems.reduce((sum, item) => sum + (item.sugar * item.percentage / 100), 0);
     const totalOil = checkedItems.reduce((sum, item) => sum + (item.oil * item.percentage / 100), 0);
-    const totalCalories = totalProtein * 4 + totalSugar * 4 + totalOil * 9;
+    const totalCalories = (totalProtein * 4) + (totalSugar * 4) + (totalOil * 9);
 
     const data = {
       labels: ['タンパク質', '糖質', '脂質'],
       datasets: [{
-        data: [totalProtein * 4, totalSugar * 4, totalOil * 9], // カロリー換算
+        data: [totalProtein, totalSugar, totalOil], // カロリー換算
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
         hoverOffset: 4
       }]
