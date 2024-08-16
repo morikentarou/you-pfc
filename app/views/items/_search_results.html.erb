@@ -1,15 +1,27 @@
 <div id="search-results">
   <% @items.each do |item| %>
     <div class="item-checkbox-percentage">
-      <%= check_box_tag 'pfc[item_ids][]', item.id, @pfc.item_ids.include?(item.id), class: 'item-checkbox', data: { item_id: item.id } %>
-      <%= label_tag "pfc_item_#{item.id}", item.item_name %>
-      <%= item.item_kcal %>kcal
-      タンパク質<%= item.item_protein %>g
-      糖質<%= item.item_sugar %>g
-      脂質<%= item.item_oil %>g
-      
-      <%= number_field_tag "pfc[adjustment_percentages][#{item.id}]", 100, step: 0.1, min: 0, id: "percentage_#{item.id}", style: 'display: none;' %>
-      <%= label_tag "percentage_#{item.id}", " (%)" %>
+      <div class="item-pfc-checkbox">
+        <%= check_box_tag 'pfc[item_ids][]', item.id, @pfc.item_ids.include?(item.id), class: 'item-checkbox', data: { item_id: item.id } %>
+      </div>
+      <div class="item-pfc-percentage-graph">
+        グラフ
+      </div>
+      <div class="item-pfc-percentage-index">
+        <div class="item-pfc-percentage-item-name">
+          <%= label_tag "pfc_item_#{item.id}", item.item_name %>
+        </div>
+        <div class="item-pfc-percentage-index-item">
+          <%= item.item_kcal %>kcal
+          タンパク質<%= item.item_protein %>g
+          糖質<%= item.item_sugar %>g
+          脂質<%= item.item_oil %>g
+        </div>
+      </div>
+      <div class="item-pfc-percentage-ratio">
+        <%= number_field_tag "pfc[adjustment_percentages][#{item.id}]", 100, step: 0.1, min: 0, id: "percentage_#{item.id}", class: "item-pfc-new-percentage-input",style: 'display: none;' %>
+        <%= label_tag "percentage_#{item.id}", " (%)" %>
+      </div>
     </div>
   <% end %>
 </div>
