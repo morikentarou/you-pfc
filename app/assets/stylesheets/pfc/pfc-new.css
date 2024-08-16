@@ -27,13 +27,21 @@
 
 /* グラフ */
 .pfc-graph{
-  height: 50vh;
+  position: relative;
+  height: 60vh;
   width: 70vw;
   max-width: 600px; 
+  overflow: hidden;
   border: 1px solid black;
   margin-bottom: 10px;
   background-color: antiquewhite;
 }
+
+#pfc-graph canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 
 /* 食材の追加 */
 .pfc-item-new-button{

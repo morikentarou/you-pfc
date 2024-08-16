@@ -1,7 +1,7 @@
-import "@hotwired/turbo-rails"
-import "controllers"
-import "chart.js"
-import "chartjs-plugin-datalabels"
+import "@hotwired/turbo-rails";
+import "controllers";
+import "chart.js";
+import "chartjs-plugin-datalabels";
 
 document.addEventListener('turbo:load', function() {
   console.log("Turbo load event fired");
@@ -61,6 +61,14 @@ document.addEventListener('turbo:load', function() {
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
       }]
     };
+
+    // ビューポートのサイズに基づいて canvas のサイズを設定
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    canvas.style.width = `${viewportWidth * 0.4}px`; // ビューポート幅の40%
+    canvas.style.height = `${viewportHeight * 0.3}px`; // ビューポート高さの30%
+    canvas.width = canvas.offsetWidth; // Canvas の幅を設定
+    canvas.height = canvas.offsetHeight; // Canvas の高さを設定
 
     // グラフのオプション
     const options = {
@@ -142,6 +150,12 @@ document.addEventListener('turbo:load', function() {
               backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
             }]
           };
+
+          // ビューポートのサイズに基づいて canvas のサイズを設定
+          canvas.style.width = `${viewportWidth * 0.4}px`; // ビューポート幅の40%
+          canvas.style.height = `${viewportHeight * 0.3}px`; // ビューポート高さの30%
+          canvas.width = canvas.offsetWidth; // Canvas の幅を設定
+          canvas.height = canvas.offsetHeight; // Canvas の高さを設定
 
           // グラフのオプション
           const options = {
