@@ -22,7 +22,7 @@
 .item-pfc-percentage-graph{
   position: relative;
   width: 25vw;
-  max-width: 210px; 
+  max-width: 200px; 
   min-width: 160px; 
   border: 1px solid black;
   border-left: none;

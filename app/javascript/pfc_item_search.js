@@ -21,7 +21,8 @@ document.addEventListener('turbo:load', function() {
       const height = chart.height;
       const totalCalories = chart.data.datasets[0].data.reduce((a, b) => a + b, 0); // カロリー値を計算
       const text = `${Math.floor(totalCalories)} kcal`;
-      const fontSize = 20;
+      const radius = Math.min(width / 2, height / 2); // 半径を計算
+      const fontSize = radius / 5; // 半径の5分の1をフォントサイズに設定
       const fontWeight = 'bold';
       const color = '#000';
 
