@@ -1,19 +1,21 @@
 document.addEventListener('turbo:load', () => {
-  const togglePercentageFields = () => {
+  const showPercentageFields = () => {
     document.querySelectorAll('input[name="pfc[item_ids][]"]').forEach(checkbox => {
       const itemId = checkbox.value;
       const percentageField = document.getElementById(`percentage_${itemId}`);
-      percentageField.style.display = 'inline-block'; // 表示する
+      if (percentageField) {
+        percentageField.style.display = 'inline-block'; // 常に表示する
+      }
     });
   };
 
-  // ページ読み込み時にチェックボックスの状態に応じて％フィールドを調整
-  togglePercentageFields();
+  // ページ読み込み時に常に％フィールドを表示
+  showPercentageFields();
 
-  // チェックボックスの状態が変更されたときに％フィールドを調整
+  // チェックボックスの状態が変更されたときに常に％フィールドを表示
   document.addEventListener('change', event => {
     if (event.target.matches('input[name="pfc[item_ids][]"]')) {
-      togglePercentageFields();
+      showPercentageFields();
     }
   });
 });
@@ -21,15 +23,16 @@ document.addEventListener('turbo:load', () => {
 // Turbo Frame が更新されたときにチェックボックスのリスナーを再設定
 document.addEventListener('turbo:frame-load', () => {
   console.log('Turbo frame load event fired');
-  const checkboxes = document.querySelectorAll('input[name="pfc[item_ids][]"]');
-  
-  // チェックボックスの状態に応じて％フィールドを調整
-  togglePercentageFields();
-
-  // チェックボックスの状態が変更されたときに％フィールドを調整
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      togglePercentageFields();
+  const showPercentageFields = () => {
+    document.querySelectorAll('input[name="pfc[item_ids][]"]').forEach(checkbox => {
+      const itemId = checkbox.value;
+      const percentageField = document.getElementById(`percentage_${itemId}`);
+      if (percentageField) {
+        percentageField.style.display = 'inline-block'; // 常に表示する
+      }
     });
-  });
+  };
+
+  showPercentageFields();
 });
+
