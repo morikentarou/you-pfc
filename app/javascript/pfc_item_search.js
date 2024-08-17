@@ -236,7 +236,7 @@ document.addEventListener('turbo:load', function() {
             borderRadius: 3,
             font: {
               weight: 'bold',
-              size: 12
+              size: 25
             },
             offset: 10
           }
