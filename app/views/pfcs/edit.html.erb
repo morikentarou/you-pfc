@@ -1,0 +1,65 @@
+<%= render "shared/header" %>
+<div class="pfc-new-pfc">
+  <div class="pfc-base">
+    <div class='pfc-sell-title'>
+      食材を登録する
+    </div>
+
+    <div class='pfc-graph' id="pfc-graph">
+    </div>
+
+    <div class="pfc-item-select-index">
+      選択中食材一覧
+      <ul>
+        <% @pfc.items.each do |item| %>
+          <li>
+            <%= item.item_name %> - カロリー: <%= item.item_kcal %>kcal
+            <!-- 必要に応じて他の属性も表示 -->
+          </li>
+        <% end %>
+      </ul>
+    </div> 
+
+    <div class="pfc-item-new-button">
+      <%= link_to new_item_path , class: "pfc-item-new-link" do %>
+        <span>新しい食材を登録する</span>
+      <% end %>
+    </div>
+
+    <div>
+      <!-- 検索フォーム -->
+      <%= form_with(url: search_items_path, method: :get, local: true, id: 'item-search-form', class: 'pfc-item-search') do |search_form| %>
+        <%= search_form.text_field :keyword, placeholder: "食材を検索", id: 'item-search-keyword', class: 'pfc-item-search-keyword' %>
+      <% end %>
+    </div>
+
+    <div class="pfc-item-regisration">
+      <!-- フォームに追加するアイテムのチェックボックス -->
+      <%= form_with(model: @pfc, local: true) do |form| %>
+
+        <!-- その他のフォームフィールド -->
+        <div class="pfc-item-time">
+          <%= form.date_field :day, class: "pfc-time-select-day", value: Date.today %>
+          <%= form.collection_select(:timezone_id, Timezone.all, :id, :name, {}, { class: "pfc-timezone-select", id: "timezone_id" }) %>
+          <%= form.time_field :time, class: "pfc-time-select-time", value: Time.now.strftime("%H:%M") %>
+        </div>
+
+        <div class="pfc-item-regisration-index-title">
+          ＜アイテム一覧＞
+        </div>
+
+        <div id="search-results-container">
+          <%= render 'items/search_results', items: @items %>
+        </div>
+
+        <div class="pfc-item-form-submit">
+          <%= form.submit "保存する", class:"pfc-item-sell-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to(root_path, class: 'record-btn') do %>
+    <span class='record-btn-text'>PFC一覧</span>
+<% end %>

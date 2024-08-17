@@ -42,7 +42,7 @@ class PfcsController < ApplicationController
 
     if @pfc.save
       adjust_items
-      redirect_to root_path
+      redirect_to edit_pfc_path(@pfc)
     else
       render :new
     end
@@ -52,11 +52,33 @@ class PfcsController < ApplicationController
   end
 
   def edit
+    @pfc = Pfc.find(params[:id])
+    @items = current_user.items
+    if params[:keyword].present?
+      @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
+    end
   end
 
   def update
-    if @pfc.update(pfc_params)
-      redirect_to pfc_path(@pfc)
+    @pfc = Pfc.new(pfc_params)
+    @pfc.user = current_user
+    @items = current_user.items
+    selected_item_ids = params[:pfc][:item_ids] || []
+    adjustment_percentages = params[:pfc][:adjustment_percentages] || {}
+
+    if selected_item_ids.blank?
+      @pfc.errors.add(:item_ids, "を選択してください。")
+      render :new
+      return
+    end
+
+    selected_item_ids.each do |item_id|
+      percentage = adjustment_percentages[item_id.to_s] || 100
+    end
+
+    if @pfc.save
+      adjust_items
+      redirect_to edit_pfc_path(@pfc)
     else
       render :edit
     end
