@@ -18,3 +18,43 @@
         <span >食材一覧</span>
   <% end %>
 </div>
+
+<h1>PFC一覧</h1>
+
+<% if @pfcs.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>カロリー (kcal)</th>
+        <th>タンパク質 (g)</th>
+        <th>糖質 (g)</th>
+        <th>脂質 (g)</th>
+        <th>食材</th>
+        <th>編集</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pfcs.each do |pfc| %>
+        <tr>
+          <td><%= pfc.total_kcal %></td> <!-- 例: カロリー合計 -->
+          <td><%= pfc.total_protein %></td> <!-- 例: タンパク質合計 -->
+          <td><%= pfc.total_sugar %></td> <!-- 例: 糖質合計 -->
+          <td><%= pfc.total_oil %></td> <!-- 例: 脂質合計 -->
+          <td>
+            <ul>
+              <% pfc.items.each do |item| %>
+                <li><%= item.item_name %></li> <!-- 各食材の名前を表示 -->
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <%= link_to '編集', edit_pfc_path(pfc) %> <!-- 編集リンク -->
+            <%= link_to "削除", pfc_path(pfc), data: {turbo_method: :delete} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>登録されたPFCはありません。</p>
+<% end %>
