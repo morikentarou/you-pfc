@@ -4,7 +4,11 @@ class PfcsController < ApplicationController
   before_action :set_pfc, only: [:edit, :update, :destroy]
   
   def index
-    @pfcs = current_user.pfcs.includes(:items)
+    if current_user
+      @pfcs = current_user.pfcs.includes(:items)
+    else
+      @pfcs = [] # ログインしていない場合は空の配列をセット
+    end
     if session[:selected_goal_id].present?
       begin
         @goal = Goal.find(session[:selected_goal_id])
