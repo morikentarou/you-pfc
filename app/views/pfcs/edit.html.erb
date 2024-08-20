@@ -11,10 +11,11 @@
     <div class="pfc-item-select-index">
       選択中食材一覧
       <ul>
-        <% @pfc.items.each do |item| %>
+        <% @pfc.pfc_items.each do |pfc_item| %> <!-- pfc_items を使用して中間モデルのデータを取得 -->
           <li>
-            <%= item.item_name %> - カロリー: <%= item.item_kcal %>kcal
-            <!-- 必要に応じて他の属性も表示 -->
+            <span id="kcal_<%= pfc_item.item.id %>" data-original-kcal="<%= pfc_item.item.item_kcal %>">
+              <%= pfc_item.item.item_name %> - <%= pfc_item.adjusted_kcal || pfc_item.item.item_kcal %> kcal
+            </span>
           </li>
         <% end %>
       </ul>

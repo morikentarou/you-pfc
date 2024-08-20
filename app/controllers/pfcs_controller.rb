@@ -67,19 +67,26 @@ class PfcsController < ApplicationController
   def update
     @pfc = Pfc.find(params[:id])
     @pfc.user = current_user
-    @items = current_user.items
     selected_item_ids = params[:pfc][:item_ids] || []
     adjustment_percentages = params[:pfc][:adjustment_percentages] || {}
-  
+
     if selected_item_ids.blank?
       @pfc.errors.add(:item_ids, "を選択してください。")
       render :edit
       return
     end
-  
-    if @pfc.update(pfc_params)
-      adjust_items
-      redirect_to edit_pfc_path(@pfc)
+
+    # 既存の pfc_items を削除
+    @pfc.pfc_items.destroy_all
+    
+    # 新しい pfc_items を作成
+    selected_item_ids.each do |item_id|
+      percentage = adjustment_percentages[item_id] || 100
+      @pfc.pfc_items.create(item_id: item_id, adjusted_kcal: calculate_adjusted_kcal(item_id, percentage))
+    end
+
+    if @pfc.save
+      redirect_to edit_pfc_path(@pfc), notice: 'Pfc was successfully updated.'
     else
       render :edit
     end
@@ -127,6 +134,11 @@ class PfcsController < ApplicationController
 
   def set_pfc
     @pfc = Pfc.find(params[:id])
+  end
+
+  def calculate_adjusted_kcal(item_id, percentage)
+    item = Item.find(item_id)
+    item.item_kcal * (percentage.to_f / 100.0)
   end
 
 end
