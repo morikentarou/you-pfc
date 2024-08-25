@@ -62,6 +62,11 @@ class PfcsController < ApplicationController
     if params[:keyword].present?
       @items = @items.where('item_name LIKE ?', "%#{params[:keyword]}%")
     end
+    # 合計値を計算
+    @total_kcal = @pfc.pfc_items.sum { |item| item.adjusted_kcal || item.item.item_kcal }
+    @total_protein = @pfc.pfc_items.sum { |item| item.item.item_protein }
+    @total_sugar = @pfc.pfc_items.sum { |item| item.item.item_sugar }
+    @total_oil = @pfc.pfc_items.sum { |item| item.item.item_oil }
   end
 
   def update
